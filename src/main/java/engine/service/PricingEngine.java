@@ -7,6 +7,6 @@ import engine.domain.ProductPricing;
 
 public interface PricingEngine {
 	
-	public List<ProductPricing> priceProducts( List<Product> products );
+	List<ProductPricing> priceProducts( List<Product> products );
 
 }
