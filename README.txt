@@ -1,7 +1,6 @@
 **NOTES FOR CODING EXERCISE BY JEFF DONOVAN FOR BARCLAY BANK
 1) The exercise will consist of a project with a pom file and code separted into packages- domain, service, etc. I will be
-   delivering a service level class that can be called/driven with corresponding Junit tests. Are you expecting the service to be
-   integrated into Spring or SpringBoot with a RESTFUL inferface/controller? I am not sure where to stop here.
+   delivering a service level class that can be called/driven with corresponding Junit tests. 
    
 2) Rule engine design uses Strategy pattern with rules linked to each other. Note if rule engine becomes more complex consider using
    a Rule Engine like Drools etc. instead of home grown solution. There are two ways to implement the Strategy pattern I choose the
@@ -25,8 +24,7 @@
 						   If Supply is Low and Demand is High, Product is sold at 5 % more than chosen price.
 						   If Supply is High and Demand is Low, Product is sold at 5 % less than chosen price.
 						   					   
-4) Rule Engine uses BigDecimal for money values with a scale set at 2. Should I consider using Joda Money or another more "sofisitcated"
-   way of representing money data.
+4) Rule Engine uses BigDecimal for money values with a scale set at 2.
 
 5) Rule Engine can be run by individual unit tests or the test harness which adds all of the rules and runs them- see engine.service.PricingEngineImplTestHarness
 

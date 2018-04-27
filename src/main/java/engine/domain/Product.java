@@ -7,7 +7,7 @@ public class Product {
 	private String      productCode;
 	private	Supply		supply;
 	private Demand		demand;
-	List<SurveyData>	surveyData;
+	List<SurveyData>		surveyData;
 	
 	public String getProductCode() {
 		return productCode;
