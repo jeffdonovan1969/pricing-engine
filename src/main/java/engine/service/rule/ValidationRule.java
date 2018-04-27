@@ -16,69 +16,66 @@ import engine.domain.SurveyData;
  *  ValidationRule - validation of data with strict "stop processing" if any data problem is found
  */
 public class ValidationRule extends PricingEngineRuleBase {
-	
-	private static final Logger	 logger = LoggerFactory.getLogger(ValidationRule.class);
-	
-	private String	noProductErrorMessage;	
-	private String	noSupplyErrorMessage;
-	private String	noDemandErrorMessage;
-	private String	noProductCodeErrorMessage;
-	private String  surveyDataRequiredErrorMessage;
-	private String  surveyDataContainsDuplicatesErrorMessage;
-	private String  invaidPriceErrorMessage;
-	private String  invalidCompetitorErrorMessage;
-	
-	public ValidationRule( PricingEngineRule next ){
+
+	private static final Logger logger = LoggerFactory.getLogger(ValidationRule.class);
+
+	private String noProductErrorMessage;
+	private String noSupplyErrorMessage;
+	private String noDemandErrorMessage;
+	private String noProductCodeErrorMessage;
+	private String surveyDataRequiredErrorMessage;
+	private String surveyDataContainsDuplicatesErrorMessage;
+	private String invaidPriceErrorMessage;
+	private String invalidCompetitorErrorMessage;
+
+	public ValidationRule(PricingEngineRule next) {
 		super(next);
 	}
-	
+
 	@Override
-	public void applyRule( ProductPricing productPricing ) throws Exception {
-		
+	public void applyRule(ProductPricing productPricing) throws Exception {
+
 		logger.debug("applyRule");
-		
-		if ( null == productPricing.getProduct() ){
+
+		if (null == productPricing.getProduct()) {
 			productPricing.setMessage(noProductErrorMessage);
-		}
-		else {
-			if ( null == productPricing.getProduct().getSupply() ){
+		} else {
+			if (null == productPricing.getProduct().getSupply()) {
 				productPricing.setMessage(noSupplyErrorMessage);
 			}
-			if ( null == productPricing.getProduct().getDemand() ){
+			if (null == productPricing.getProduct().getDemand()) {
 				productPricing.setMessage(noDemandErrorMessage);
 			}
-			if ( StringUtils.isEmpty(productPricing.getProduct().getProductCode()) ){
+			if (StringUtils.isEmpty(productPricing.getProduct().getProductCode())) {
 				productPricing.setMessage(noProductCodeErrorMessage);
 			}
-			if ( CollectionUtils.isEmpty(productPricing.getProduct().getSurveyData())){
+			if (CollectionUtils.isEmpty(productPricing.getProduct().getSurveyData())) {
 				productPricing.setMessage(surveyDataRequiredErrorMessage);
-			}
-			else {
+			} else {
 				// Ensure survey data has no duplicates
 				Set<SurveyData> surveyDataSet = new HashSet<SurveyData>(productPricing.getProduct().getSurveyData());
-				if ( surveyDataSet.size() != productPricing.getProduct().getSurveyData().size() ){
+				if (surveyDataSet.size() != productPricing.getProduct().getSurveyData().size()) {
 					productPricing.setMessage(surveyDataContainsDuplicatesErrorMessage);
-				}
-				else {
-					for ( SurveyData data : productPricing.getProduct().getSurveyData() ){
+				} else {
+					for (SurveyData data : productPricing.getProduct().getSurveyData()) {
 						// Ensure price is not less than zero
-						if ( null == data.getPrice() || data.getPrice().compareTo(BigDecimal.ZERO) < 0){
+						if (null == data.getPrice() || data.getPrice().compareTo(BigDecimal.ZERO) < 0) {
 							productPricing.setMessage(invaidPriceErrorMessage);
 						}
 						// Ensure competitor has value
-						if ( StringUtils.isEmpty(data.getCompetitor())){
+						if (StringUtils.isEmpty(data.getCompetitor())) {
 							productPricing.setMessage(invalidCompetitorErrorMessage);
 						}
 					}
 				}
 			}
 		}
-		
+
 		// No messages than data is valid proceed to next rule
-		if ( CollectionUtils.isEmpty(productPricing.getMessages()) ){
+		if (CollectionUtils.isEmpty(productPricing.getMessages())) {
 			applyNext(productPricing);
 		}
-	
+
 	}
 
 	public String getNoProductErrorMessage() {
@@ -144,6 +141,5 @@ public class ValidationRule extends PricingEngineRuleBase {
 	public void setInvalidCompetitorErrorMessage(String invalidCompetitorErrorMessage) {
 		this.invalidCompetitorErrorMessage = invalidCompetitorErrorMessage;
 	}
-	
 
 }

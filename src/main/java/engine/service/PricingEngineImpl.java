@@ -20,8 +20,8 @@ public class PricingEngineImpl implements PricingEngine {
 		Date now = new Date();
 		
 		List<ProductPricing> pricing = new ArrayList<ProductPricing>();
-		if ( CollectionUtils.isNotEmpty(products) ){
-			for ( Product product : products ){
+		if (CollectionUtils.isNotEmpty(products) ){
+			products.forEach( product -> {
 				ProductPricing productPricing = new ProductPricing(product);
 				productPricing.setRunDate(now);
 				pricing.add(productPricing);
@@ -31,7 +31,7 @@ public class PricingEngineImpl implements PricingEngine {
 				catch ( Exception ex ){
 					productPricing.setMessage("Exception while processing: " + ex.getMessage());
 				}
-			}
+			});
 		}
 		return pricing;
 
