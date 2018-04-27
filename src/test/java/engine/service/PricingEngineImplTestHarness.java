@@ -33,7 +33,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	// Filter Rule Tests
 	@Test
 	public void testFilterData(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.LOW,Demand.LOW,new double[]{1.00,10.00,20.00}));
 		
@@ -48,7 +48,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	
 	@Test
 	public void testFilterDataFilterBoundries(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.HIGH,Demand.HIGH,new double[]{1.00,2.00,3.00}));
 		
@@ -64,7 +64,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	// Pricing Rule Tests
 	@Test
 	public void testPricingWithDuplicates(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.HIGH,Demand.HIGH,new double[]{1.00,2.00,2.00,3.00}));
 		
@@ -78,7 +78,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	
 	@Test
 	public void testPricingWithMultipleDuplicates(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.HIGH,Demand.HIGH,new double[]{10.00,12.00,12.00,13.00,13.00,13.00}));
 			
@@ -92,7 +92,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	
 	@Test
 	public void testPricingNoDuplicatePrices(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.HIGH,Demand.HIGH,new double[]{1.00,2.00,3.00}));
 		
@@ -107,7 +107,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	// Supply and Demand Rule Tests
 	@Test
 	public void testLowSupplyLowDemand(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.LOW,Demand.LOW,new double[]{10.00}));
 		
@@ -122,7 +122,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	
 	@Test
 	public void testLowSupplyHighDemand(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.LOW,Demand.HIGH,new double[]{10.00}));
 		
@@ -137,7 +137,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	
 	@Test
 	public void testHighSupplyLowDemand(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.HIGH,Demand.LOW,new double[]{10.00}));
 		
@@ -152,7 +152,7 @@ public class PricingEngineImplTestHarness extends BaseRuleTest {
 	
 	@Test
 	public void testHighSupplyHighDemand(){
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(buildProduct("product1", "competitor", Supply.HIGH,Demand.HIGH,new double[]{10.00}));
 		

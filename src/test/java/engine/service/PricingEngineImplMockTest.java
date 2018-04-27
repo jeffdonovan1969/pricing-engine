@@ -32,7 +32,7 @@ public class PricingEngineImplMockTest extends BaseRuleTest {
 
 	@Test
 	public void testRunMultipleEmptyProducts()  throws Exception {
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 		
 		List<ProductPricing> productPricing = pricingEngine.priceProducts(products);
 		
@@ -42,7 +42,7 @@ public class PricingEngineImplMockTest extends BaseRuleTest {
 	
 	@Test
 	public void testRunMultipleProducts() throws Exception {
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 		products.add(buildProduct("product1", "competitor", Supply.LOW,Demand.LOW,new double[]{1.00,10.00,20.00}));
 		products.add(buildProduct("product2", "competitor2", Supply.LOW,Demand.LOW,new double[]{1.00,10.00,20.00}));
 		
